@@ -1,16 +1,19 @@
-// $("#main").append("David Christensen");
-
-var formattedName = HTMLheaderName.replace("%data%","David Christensen");
-var formattedRole = HTMLheaderRole.replace("%data%","Design Engineer");
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
+var skills = ["C#", "C++", "NXOpen", "Other stuff"];
 
 var bio = {
-  "name" : formattedName,
-  "role" : formattedRole,
-  "contactInfo" : "contactInfo",
-  "pictureURL" : "url",
-  "welcomeMessage" : "Hi.",
-  "skills" : "skills"
-}
+	"name" : "David Christensen",
+	"role" : "Design Engineer",
+	"mobile" : "123-456-7890",
+	"email" : "email@gmail.com",
+	"github" : "https://github.com/davidmchris",
+	"pictureURL" : "images/dave.jpg",
+	"welcomeMessage" : "Hello",
+	"skills" : skills
+};
+
+$("#header").prepend(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").prepend(HTMLheaderName.replace("%data%", bio.name));
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.mobile))
+$("#topContacts").append(HTMLemail.replace("%data%", bio.email))
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.github))
+$("#header").append(HTMLbioPic.replace("%data%", bio.pictureURL))
