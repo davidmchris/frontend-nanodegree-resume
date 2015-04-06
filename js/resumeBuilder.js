@@ -1,7 +1,3 @@
-var skills = ["C#", "C++", "NXOpen", "Other stuff"];
-
-
-
 var bio = {
 	"name" : "David Christensen",
 	"role" : "Design Engineer",
