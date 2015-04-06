@@ -79,12 +79,37 @@ var education = {
 }
 
 
+if(bio.skills.length > 0)
+{
+  $("#header").append(HTMLskillsStart);
+  var index;
+  for(index = 0; index < bio.skills.length; index++)
+  {
+    $("#skills").append(HTMLskills.replace("%data%",bio.skills[index]));
+  }
+}
 
+function displayWork()
+{
+  for(item in work.jobs)
+  {
+    $("#workExperience").append(HTMLworkStart);
+    var job = HTMLworkEmployer.replace("%data%",work.jobs[item].employer)
+    job = job + HTMLworkTitle.replace("%data%",work.jobs[item].title);
+    job = job + HTMLworkLocation.replace("%data%",work.jobs[item].location);
+    job = job + HTMLworkDates.replace("%data%",work.jobs[item].dates);
+    job = job + HTMLworkDescription.replace("%data%",work.jobs[item].description);
+    
+    $(".work-entry:last").append(job);
+    
+  }
+}
 
+displayWork();
 
-
-
-
+$(document).click(function(log) {
+logClicks(log.pageX,log.pageY);
+});
 
 
 
