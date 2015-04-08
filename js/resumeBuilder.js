@@ -1,13 +1,13 @@
 var bio = {
 	"name" : "David Christensen",
-	"role" : "Design Engineer",
+	"role" : "Engineering Automation Programmer",
   "contacts" : [{
     "mobile" : "123-456-7890",
-    "email" : "email@gmail.com",
+    "email" : "fake_address@gmail.com",
     "github" : "https://github.com/davidmchris",
     "twitter" : "None",
     "location" : "Some place"}],
-	"welcomeMessage" : "Hello",
+	"welcomeMessage" : "Hello fellow lover of the arts. Welcome to the painting...",
 	"skills" : ["C++","C#","NX","Web services"],
   "biopic" : "images/dave.jpg"
 };
@@ -30,7 +30,7 @@ var projects = {
       "title": "Plate Tool",
       "dates": "Apr 2014 - Aug 2014",
       "description": "Created a tool that reduces design time from 14 weeks to 4 weeks.",
-      "images": ["placeholder.it/75x75"]
+      "images": ["http://placehold.it/75x75"]
     }
   ]
 }
@@ -78,6 +78,14 @@ var education = {
   ]
 }
 
+$("#header").append(HTMLheaderName.replace("%data%", bio.name));
+$("#header").append(HTMLheaderRole.replace("%data%", bio.role));
+$("#header").append(HTMLbioPic.replace("%data%", bio.biopic));
+$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+$("#topContacts").append(HTMLmobile.replace("%data%", bio.contacts[0].mobile));
+$("#topContacts").append(HTMLemail.replace("%data%", bio.contacts[0].email));
+$("#topContacts").append(HTMLgithub.replace("%data%", bio.contacts[0].github));
+
 
 if(bio.skills.length > 0)
 {
@@ -107,14 +115,20 @@ function displayWork()
 
 displayWork();
 
-$(document).click(function(log) {
-logClicks(log.pageX,log.pageY);
-});
+projects.display = function()
+{
+  for(var i=0; i<projects.projects.length; i++)
+  {
+    var proj = projects.projects[i];
+    $("#projects").append(HTMLprojectStart);
+    $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", proj.title));
+    $(".project-entry:last").append(HTMLprojectDates.replace("%data%", proj.dates));
+    $(".project-entry:last").append(HTMLprojectDescription.replace("%data%", proj.description));
+    for(var j=0; j<proj.images.length; j++)
+    {
+      $(".project-entry:last").append(HTMLprojectImage.replace("%data%", proj.images[j]));
+    }
+  }
+}
 
-
-
-
-
-
-
-
+projects.display();
